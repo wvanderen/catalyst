@@ -15,9 +15,15 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: db/test.mysql2
+  adapter: mysql2
+  encoding: utf8
+  database: test
+  username: <%=ENV['C9_USER']%>
+  host: <%=ENV['IP']%>
 
 production:
-  <<: *default
-  database: db/production.mysql2
+  adapter: mysql2
+  encoding: utf8
+  database: production
+  username: <%=ENV['C9_USER']%>
+  host: <%=ENV['IP']%>
