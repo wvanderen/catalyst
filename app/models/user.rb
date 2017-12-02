@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   require 'bcrypt'
   
+  validates :username, 
+            uniqueness: { case_sensitive: false },
+            presence: true,
+            length: { minimum: 1, maximum: 20}
   validates :experience, presence: true
   validates :email,
         presence: true,
