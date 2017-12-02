@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   
   root 'welcome#index'
+  
+  patch '/user/confirmation' => 'user/confirmations#update', :via => :patch, :as => :update_user_confirmation
 
   
   # The priority is based upon order of creation: first created -> highest priority.
