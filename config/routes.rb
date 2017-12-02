@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'welcome/index'
 
   get 'welcome/about'
@@ -6,8 +7,7 @@ Rails.application.routes.draw do
   get 'welcome/contact'
   
   root 'welcome#index'
-  
-  get '/phpmyadmin'
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

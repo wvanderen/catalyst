@@ -52,3 +52,4 @@ end
 
 gem 'sprockets-rails'
 gem 'bootstrap-sass'
+gem 'devise'
