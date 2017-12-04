@@ -13,5 +13,6 @@
  end
  practices = Practice.all
  
+
  puts "Seed finished"
  puts "#{Practice.count} practices created"

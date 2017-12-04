@@ -33,6 +33,10 @@ RSpec.describe User, type: :model do
         end
         
         context "admin user" do
+            before do
+                user.admin!
+            end
+            
             it "returns false for #standard?" do
                 expect(user.standard?).to be_falsey
             end

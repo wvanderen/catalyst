@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   require 'bcrypt'
   
+  before_save {self.role ||= :standard }
+  
   validates :username, 
             uniqueness: { case_sensitive: false },
             presence: true,
@@ -10,6 +12,11 @@ class User < ActiveRecord::Base
         presence: true,
         uniqueness: { case_sensitive: false },
         length: {minimum: 3, maximum: 254 }
+    
+  enum role: [:standard, :admin]
+    
+    
+
         
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

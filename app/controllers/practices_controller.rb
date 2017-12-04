@@ -1,4 +1,7 @@
 class PracticesController < ApplicationController
+  
+  before_action :authorize_user, except: [:index, :show]
+  
   def index
     @practices = Practice.all
   end
@@ -56,6 +59,16 @@ class PracticesController < ApplicationController
     else
       flash.now[:alert] = "There was an error deleting the practice."
       render :show
+    end
+  end
+  
+  private
+  
+  def authorize_user
+    
+    unless current_user && current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to practices_path
     end
   end
 end
