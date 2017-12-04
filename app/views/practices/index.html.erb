@@ -1,0 +1,13 @@
+<h1>My Practices</h1>
+ <% @practices.each do |practice| %>
+   <div class="media">
+       <div class="media-body">
+           <h4 class="media heading">
+               <%= link_to practice.title, practice %>
+           </h4>
+       </div>
+   </div>
+ <% end %>
+ <div class="col-md-4">
+   <%= link_to "New Practice", new_practice_path, class: 'btn btn-success' %>
+ </div>

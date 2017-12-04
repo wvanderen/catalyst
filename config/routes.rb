@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :practices
+
   devise_for :users, :controllers => {registrations: 'registrations' }
   get 'welcome/index'
 

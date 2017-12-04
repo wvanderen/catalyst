@@ -10,8 +10,8 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <h2>Catalyst</h2>
-      <li><%= link_to "Home", welcome_index_path %></li>
+      <li><%= link_to "Catalyst", root_path %></li>
+      <li><%= link_to "My Practices", practices_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
       <li><%= link_to "Contact", welcome_contact_path %></li>
       <% if user_signed_in? %>
@@ -21,9 +21,21 @@
        <% else %>
          <li><%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %></li> 
          <li><%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %></li>
-       <% end %>
+      <% end %>
     
+
     </ul>
+     <% if flash[:notice] %>
+       <div class="alert alert-success">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:notice] %>
+       </div>
+     <% elsif flash[:alert] %>
+       <div class="alert alert-warning">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:alert] %>
+       </div>
+     <% end %> 
   </div>
 
 <%= yield %>
