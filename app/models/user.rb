@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   require 'bcrypt'
   
+  has_one :avatar
+  
   before_save {self.role ||= :standard }
   
   validates :username, 
