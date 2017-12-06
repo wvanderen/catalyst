@@ -5,8 +5,8 @@
  # #1
    Practice.create!(
  # #2
-     title:  RandomData.random_sentence,
-     description:   RandomData.random_paragraph,
+     title:  Faker::Ancient.god,
+     description:   Faker::HarryPotter.quote,
      duration: rand(1..100),
      experience: rand(1..100)
    )

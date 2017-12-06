@@ -1,0 +1,5 @@
+asset 'angular'
+asset 'bootstrap'
+asset 'angular-sanitize'
+asset 'angular-bootstrap'
+asset 'angular-ui-select'
