@@ -19,7 +19,8 @@ class PracticesController < ApplicationController
     @practice.title = params[:practice][:title]
     @practice.description = params[:practice][:description]
     @practice.experience = params[:practice][:experience]
-    @practice.duration = params[:practice][:duration]
+    @practice.threshold = params[:practice][:threshold]
+    @practice.type = params[:practice][:type]
     
     if @practice.save
       flash[:notice] = "Practice was saved."
@@ -39,7 +40,8 @@ class PracticesController < ApplicationController
     @practice.title = params[:practice][:title]
     @practice.description = params[:practice][:description]
     @practice.experience = params[:practice][:experience]
-    @practice.duration = params[:practice][:duration]
+    @practice.threshold = params[:practice][:threshold]
+    @practice.type = params[:practice][:type]
     
     if @practice.save
       flash[:notice] = "Practice was updated."

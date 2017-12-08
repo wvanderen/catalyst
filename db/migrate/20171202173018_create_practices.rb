@@ -3,8 +3,9 @@ class CreatePractices < ActiveRecord::Migration
     create_table :practices do |t|
       t.string :title
       t.text :description
-      t.integer :duration
+      t.integer :threshold
       t.integer :experience
+      t.integer :type
 
       t.timestamps null: false
     end

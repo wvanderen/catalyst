@@ -6,7 +6,7 @@ require 'support/controller_macros.rb'
 RSpec.describe PracticesController, type: :controller do
   include Devise::Test::ControllerHelpers
   let(:user) { FactoryGirl.create(:user) }
-  let(:my_practice) {Practice.create!(title: "New Practice Title", description: "New Practice Description", experience: rand(1..100), duration: rand(1..100)) }
+  let(:my_practice) {Practice.create!(title: "New Practice Title", description: "New Practice Description", experience: rand(1..100), threshold: rand(1..100)) }
 
   context "guest" do
     describe "GET show" do
@@ -35,7 +35,7 @@ RSpec.describe PracticesController, type: :controller do
 
     describe "POST create" do
       it "returns http redirect" do
-        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, duration: 0, experience: 0}
+        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, threshold: 0, experience: 0}
         expect(response).to redirect_to(practices_path)
       end
     end
@@ -51,10 +51,10 @@ RSpec.describe PracticesController, type: :controller do
       it "returns http redirect" do
         new_title = RandomData.random_sentence
         new_description = RandomData.random_paragraph
-        new_duration = rand(1..100)
+        new_threshold = rand(1..100)
         new_experience = rand(1..100)
 
-        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, duration: new_duration, experience: new_experience}
+        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, threshold: new_threshold, experience: new_experience}
         expect(response).to redirect_to(practices_path)
       end
     end
@@ -98,7 +98,7 @@ RSpec.describe PracticesController, type: :controller do
 
     describe "POST create" do
       it "returns http redirect" do
-        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, duration: 0, experience: 0}
+        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, threshold: 0, experience: 0}
         expect(response).to redirect_to(practices_path)
       end
     end
@@ -114,10 +114,10 @@ RSpec.describe PracticesController, type: :controller do
       it "returns http redirect" do
         new_title = RandomData.random_sentence
         new_description = RandomData.random_paragraph
-        new_duration = rand(1..100)
+        new_threshold = rand(1..100)
         new_experience = rand(1..100)
 
-        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, duration: new_duration, experience: new_experience}
+        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, threshold: new_threshold, experience: new_experience}
         expect(response).to redirect_to(practices_path)
       end
     end
@@ -184,16 +184,16 @@ RSpec.describe PracticesController, type: :controller do
   
     describe "POST create" do
       it "increases the number of Practice by 1" do
-        expect{post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, experience: rand(1..100), duration: rand(1..100)}}.to change(Practice, :count).by(1)
+        expect{post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, experience: rand(1..100), threshold: rand(1..100)}}.to change(Practice, :count).by(1)
       end
     
       it "assigns the new practice to @practice" do
-        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, experience: rand(1..100), duration: rand(1..100)}
+        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, experience: rand(1..100), threshold: rand(1..100)}
         expect(assigns(:practice)).to eq Practice.last
       end
     
       it "redirects to the new practice" do
-        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, experience: rand(1..100), duration: rand(1..100)}
+        post :create, practice: {title: RandomData.random_sentence, description: RandomData.random_paragraph, experience: rand(1..100), threshold: rand(1..100)}
         expect(response).to redirect_to Practice.last
       end
     end
@@ -218,7 +218,7 @@ RSpec.describe PracticesController, type: :controller do
         expect(practice_instance.id).to eq my_practice.id
         expect(practice_instance.title).to eq my_practice.title
         expect(practice_instance.description).to eq my_practice.description
-        expect(practice_instance.duration).to eq my_practice.duration
+        expect(practice_instance.threshold).to eq my_practice.threshold
         expect(practice_instance.experience).to eq my_practice.experience
       end
       
@@ -229,9 +229,9 @@ RSpec.describe PracticesController, type: :controller do
         new_title = RandomData.random_sentence
         new_description = RandomData.random_paragraph
         new_experience = rand(1..100)
-        new_duration = rand(1..100)
+        new_threshold = rand(1..100)
       
-        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, experience: new_experience, duration: new_duration}
+        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, experience: new_experience, threshold: new_threshold}
         expect(response).to redirect_to my_practice
       end
     
@@ -239,9 +239,9 @@ RSpec.describe PracticesController, type: :controller do
         new_title = RandomData.random_sentence
         new_description = RandomData.random_paragraph
         new_experience = rand(1..100)
-        new_duration = rand(1..100)
+        new_threshold = rand(1..100)
       
-        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, experience: new_experience, duration: new_duration}
+        put :update, id: my_practice.id, practice: {title: new_title, description: new_description, experience: new_experience, threshold: new_threshold}
         expect(response).to redirect_to my_practice
       end
       
@@ -268,6 +268,7 @@ RSpec.describe PracticesController, type: :controller do
       it "adds the experience to the user" do
         
       end
+    end
   end
 end
 
