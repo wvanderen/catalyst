@@ -9,7 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     super do |resource|
+      super do
+        @avatar = Avatar.new(avatar_params)
+        @user.avatar_id = @avatar.id
+        @user.save
+      end
    end
 
   # GET /resource/edit

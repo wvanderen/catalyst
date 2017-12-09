@@ -15,6 +15,12 @@ RSpec.describe User, type: :model do
         it "responds to standard?" do
             expect(user).to respond_to(:standard?)
         end
+        
+        it "creates and links an Avatar upon creation" do
+            expect(user.avatar_id).to_not be_nil
+        end
+        
+        
   end
   
     describe "roles" do

@@ -1,9 +1,13 @@
 class User < ActiveRecord::Base
   require 'bcrypt'
   
-  has_one :avatar
+  has_one :avatar, dependent: :destroy
+  accepts_nested_attributes_for :avatar
+  
   
   before_save {self.role ||= :standard }
+
+  
   
   validates :username, 
             uniqueness: { case_sensitive: false },
@@ -16,6 +20,7 @@ class User < ActiveRecord::Base
         length: {minimum: 3, maximum: 254 }
     
   enum role: [:standard, :admin]
+  
     
     
 
@@ -25,4 +30,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
+         
 end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :avatar do
     experience 1
     user nil

@@ -1,6 +1,6 @@
 class PracticesController < ApplicationController
   
-  before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :start]
   
   def index
     @practices = Practice.all
@@ -62,6 +62,15 @@ class PracticesController < ApplicationController
       flash.now[:alert] = "There was an error deleting the practice."
       render :show
     end
+  end
+  
+  def start
+    @practice = Practice.find(params[:practice_id])
+  end
+  
+  def complete
+    #Add @practices.experience to @avatar.experience
+    #Redirect to practices index. Display congruatulations banner.
   end
   
   private
