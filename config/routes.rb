@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   end
  end
   
-  root 'welcome#index'
-  get "*unmatched_route" => "welcome#index"
+  root 'application#index'
+  get '*path' => 'application#index'
   
   patch '/user/confirmation' => 'user/confirmations#update', :via => :patch, :as => :update_user_confirmation
 

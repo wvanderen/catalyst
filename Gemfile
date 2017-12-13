@@ -52,10 +52,11 @@ group :development do
   gem 'spring'
 end
 
-gem 'sprockets-rails'
+gem 'sprockets'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'faker'
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'bower-rails'
+gem 'tilt'

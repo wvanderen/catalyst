@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html ng-app='catalyst'>
+<html>
 <head lang="en">
   <meta charset="UTF-8">
   <title>Catalyst</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
 
 </head>
-<body>
+<body ng-app='catalyst'>
     <ul class="nav nav-tabs">
       <!--<li><a ui-sref="home" class="logo">-->
       <!--    <img class="catalyst-logo" src="./app/assets/images/catalyst-web-logo-new.png">-->
@@ -23,11 +24,8 @@
          <li><%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %></li> 
          <li><%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %></li>
       <% end %>
+     </ul>
      
-    
-    
-
-    </ul>
      <% if flash[:notice] %>
        <div class="alert alert-success">
          <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -39,10 +37,8 @@
          <%= flash[:alert] %>
        </div>
      <% end %> 
-  </div>
 
 <%= yield %>
-
 
 </body>
 </html>

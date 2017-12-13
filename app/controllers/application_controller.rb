@@ -7,4 +7,6 @@ class ApplicationController < ActionController::Base
     render 'layouts/application'
   end
   
+  def index
+  end
 end
