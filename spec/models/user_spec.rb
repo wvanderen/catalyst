@@ -16,8 +16,8 @@ RSpec.describe User, type: :model do
             expect(user).to respond_to(:standard?)
         end
         
-        it "creates and links an Avatar upon creation" do
-            expect(user.avatar_id).to_not be_nil
+        it "has an experience attribute" do
+            expect(user.experience).to_not be_nil
         end
         
         

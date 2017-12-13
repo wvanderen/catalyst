@@ -11,7 +11,16 @@ Rails.application.routes.draw do
 
   get 'welcome/contact'
   
+ scope "/api" do
+  scope "/v1" do
+    scope "/task" do
+      get '/' => 'task#all'
+    end
+  end
+ end
+  
   root 'welcome#index'
+  get "*unmatched_route" => "welcome#index"
   
   patch '/user/confirmation' => 'user/confirmations#update', :via => :patch, :as => :update_user_confirmation
 

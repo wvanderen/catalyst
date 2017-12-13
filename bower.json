@@ -1,0 +1,23 @@
+{
+  "name": "catalyst",
+  "homepage": "https://github.com/wvanderen/catalyst",
+  "authors": [
+    "William Van Deren <wvanderen@gmail.com>"
+  ],
+  "description": "Gamified platform for exploration and mastery of experience",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^1.0.11",
+    "angular": "^1.6.7"
+  }
+}

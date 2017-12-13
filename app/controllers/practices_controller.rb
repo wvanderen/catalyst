@@ -69,8 +69,20 @@ class PracticesController < ApplicationController
   end
   
   def complete
-    #Add @practices.experience to @avatar.experience
-    #Redirect to practices index. Display congruatulations banner.
+    
+    @practice = Practice.find(params[:id])
+    @user = User.find(params[:user_id])
+    
+    #Add @practices.experience to @user.experience
+    @user.experience += @practice.experience
+    
+    if @user.save
+      flash[:notice] = "Congratulations on completing the practice. You've earned " + @practice.experience + " experience."
+      redirect_to practices_path
+    else
+      flash.now[:alert] = "There was an error completing the practice. Please try again."
+      render :show
+    end
   end
   
   private

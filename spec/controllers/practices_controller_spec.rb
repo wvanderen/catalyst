@@ -5,8 +5,8 @@ require 'support/controller_macros.rb'
 
 RSpec.describe PracticesController, type: :controller do
   include Devise::Test::ControllerHelpers
-  let(:user) { FactoryGirl.create(:user) }
-  let(:my_practice) {Practice.create!(title: "New Practice Title", description: "New Practice Description", experience: rand(1..100), threshold: rand(1..100)) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:my_practice) {Practice.create!(title: "New Practice Title", description: "New Practice Description", experience: rand(1..100)) }
 
   context "guest" do
     describe "GET show" do
@@ -125,6 +125,19 @@ RSpec.describe PracticesController, type: :controller do
     describe "DELETE destroy" do
       it "returns http redirect" do
         delete :destroy, id: my_practice.id
+        expect(response).to redirect_to(practices_path)
+      end
+    end
+    
+    describe "PUT complete" do
+      it "adds practice experience to user experience" do
+        exp = user.experience
+        post :complete, {id: my_practice.id, user_id: user.id}
+        expect(user.experience).to eq(exp + my_practice.experience)
+      end
+      
+      it "redirects to practices index" do
+        post :complete, {id: my_practice.id, user_id: user.id}
         expect(response).to redirect_to(practices_path)
       end
     end
@@ -260,15 +273,6 @@ RSpec.describe PracticesController, type: :controller do
       end
     end
     
-    describe "PUT start" do
-      it "starts the timer" do
-        
-      end
-      
-      it "adds the experience to the user" do
-        
-      end
-    end
   end
 end
 

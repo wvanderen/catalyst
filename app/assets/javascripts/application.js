@@ -10,14 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require bootstrap-sprockets
-//= require angular
-//= require angular-ui-router
+//= require angular/angular
+//= require angular-ui-router/release/angular-ui-router
+//= require_self
 //= require angular-sanitize
 //= require angular-rails-templates
 //= require ng-app/app
@@ -28,3 +27,5 @@
 //= require_tree ./ng-app/models
 //= require_tree ./ng-app/services
 //= require_tree ./ng-app/controllers
+
+var app = angular.module('catalyst', ['ui.router']);

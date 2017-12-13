@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   
   
   before_save {self.role ||= :standard }
+  before_save {self.experience ||= 0}
 
   
   

@@ -1,3 +1,16 @@
-<h1>Welcome to Catalyst!</h1>
-<p>Catalyst is a gamified platform for exploration and mastery of experience.</p>
-<a>Learn More</a>
+<div class='container' ng-controller="HomeCtrl">
+    <div class='row text-center'>
+        <h1>Home</h1>
+        <pre>{{message}}</pre>
+    </div>
+</div>
+
+<% if current_user %>
+    <h1>Hello, <%= current_user.username %></h1>
+    <p>Current experience: <%= current_user.experience %></p>
+    <p>Let's get going, shall we? Here are your current suggested practices:</p>
+<% else %>
+    <h1>Welcome to Catalyst!</h1>
+    <p>Catalyst is a gamified platform for exploration and mastery of experience.</p>
+    <a>Learn More</a>
+<% end %>

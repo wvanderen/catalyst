@@ -5,5 +5,6 @@ FactoryBot.define do
     password "password"
     password_confirmation "password"
     confirmed_at Date.today
+    experience 0
   end
 end

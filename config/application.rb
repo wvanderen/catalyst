@@ -8,6 +8,19 @@ Bundler.require(*Rails.groups)
 
 module Workspace
   class Application < Rails::Application
+    config.assets.paths << Rails.root.join("vendor", "assets", "bower_components")
+    
+    #Telling asset pipeline about angular directories
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "controllers")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "directives")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "filters")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "models")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "modules")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "services")
+    config.assets.paths << Rails.root.join("app", "assets", "javascripts", "ng-app", "templates")
+    
+    config.assets.precompile += %w(app.js)
+    config.assets.precompile += %w(HomeCtrl.js)
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
