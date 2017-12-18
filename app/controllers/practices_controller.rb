@@ -1,75 +1,51 @@
 class PracticesController < ApplicationController
   
-  before_action :authorize_user, except: [:index, :show, :start]
+  before_action :set_practice, only: [:show, :edit, :update, :destroy]
   
   def index
     @practices = Practice.all
   end
 
   def show
-    @practice = Practice.find(params[:id])
-  end
-
-  def new
-    @practice = Practice.new
   end
   
   def create
-    @practice = Practice.new
-    @practice.title = params[:practice][:title]
-    @practice.description = params[:practice][:description]
-    @practice.experience = params[:practice][:experience]
-    @practice.threshold = params[:practice][:threshold]
-    @practice.type = params[:practice][:type]
+    @practice = Practice.new(practice_params)
     
-    if @practice.save
-      flash[:notice] = "Practice was saved."
-      redirect_to @practice
-    else
-      flash.now[:alert] = "There was an error saving the practice. Please try again."
-      render :new
+    respond_to do |format|
+      if @practice.save
+        format.json { render :show, status: :created, location: @practice }
+      else
+        format.json { render json: @practice.errors, status: :unprocessable_entity }
+      end
     end
-  end
-
-  def edit
-    @practice = Practice.find(params[:id])
   end
   
   def update
-    @practice = Practice.find(params[:id])
-    @practice.title = params[:practice][:title]
-    @practice.description = params[:practice][:description]
-    @practice.experience = params[:practice][:experience]
-    @practice.threshold = params[:practice][:threshold]
-    @practice.type = params[:practice][:type]
-    
-    if @practice.save
-      flash[:notice] = "Practice was updated."
-      redirect_to @practice
-    else
-      flash.now[:alert] = "There was an error saving the practice. Please try again."
-      render :edit
+    respond_to do |format|
+      if @practice.update(practice_params)
+        format.json { render :show, status: :ok, location: @practice }
+      else
+        format.json { render json: @practice.errors, status: :unprocessable_entity }
+      end
     end
   end
   
   def destroy
-    @practice = Practice.find(params[:id])
+    @practice.destroy
     
-    if @practice.destroy
-      flash[:notice] = "\"#{@practice.title}\"was deleted successfully."
-      redirect_to practices_path
-    else
-      flash.now[:alert] = "There was an error deleting the practice."
-      render :show
+    respond_to do |format|
+      format.json { head :no_content }
     end
   end
   
   def start
+    #Update for Angular
     @practice = Practice.find(params[:practice_id])
   end
   
   def complete
-    
+    #Update for Angular
     @practice = Practice.find(params[:id])
     @user = User.find(params[:user_id])
     
@@ -87,8 +63,15 @@ class PracticesController < ApplicationController
   
   private
   
+  def set_practice
+    @practice = Practice.find(params[:id])
+  end
+  
+  def practice_params
+    params.require(:practice).permit(:title, :description, :threshold, :experience, :type)
+  end
+  
   def authorize_user
-    
     unless current_user && current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       redirect_to practices_path

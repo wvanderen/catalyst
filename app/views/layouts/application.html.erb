@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Catalyst</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+     <%= csrf_meta_tags %>
     <%= javascript_include_tag "application" %>
     <%= stylesheet_link_tag    'application', media: 'all'%>
 
@@ -14,8 +15,8 @@
       <!--    <img class="catalyst-logo" src="./app/assets/images/catalyst-web-logo-new.png">-->
       <!--</a></li>-->
       <li><a ui-sref="practices" class="link">Practices</a></li>
-      <li><%= link_to "About", welcome_about_path %></li>
-      <li><%= link_to "Contact", welcome_contact_path %></li>
+      <li>About</li>
+      <li>Contact</li>
       <% if user_signed_in? %>
          <li class="navbar-text">Signed in as: <strong><%= current_user.username %></strong></li>
          <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>

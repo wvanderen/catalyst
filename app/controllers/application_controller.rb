@@ -8,5 +8,6 @@ class ApplicationController < ActionController::Base
   end
   
   def index
+    render 'application/index'
   end
 end

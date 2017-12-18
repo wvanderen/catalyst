@@ -20,13 +20,8 @@
 //= require_self
 //= require angular-sanitize
 //= require angular-rails-templates
-//= require ng-app/app
-//= require_tree ./ng-app/templates
-//= require_tree ./ng-app/modules
-//= require_tree ./ng-app/filters
-//= require_tree ./ng-app/directives
-//= require_tree ./ng-app/models
-//= require_tree ./ng-app/services
-//= require_tree ./ng-app/controllers
+//= require angular-route
 
-var app = angular.module('catalyst', ['ui.router']);
+//= require_tree .
+//= require_tree ../templates
+//= require_tree ./angular

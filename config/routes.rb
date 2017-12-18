@@ -1,26 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :practices do
-    get 'start', :show
-  end
+  resources :practices, only: [:index, :create, :update, :show, :destroy]
+  #   get 'start', :show
+  # end
   
   devise_for :users, :controllers => {registrations: 'registrations' }
   get 'welcome/index'
 
-  get 'welcome/about'
 
-  get 'welcome/contact'
-  
- scope "/api" do
-  scope "/v1" do
-    scope "/task" do
-      get '/' => 'task#all'
-    end
-  end
- end
-  
-  root 'application#index'
-  get '*path' => 'application#index'
+  root 'main#index'
+  get '*path' => 'main#index'
   
   patch '/user/confirmation' => 'user/confirmations#update', :via => :patch, :as => :update_user_confirmation
 
