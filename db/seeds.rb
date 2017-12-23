@@ -7,7 +7,6 @@
  # #2
      title:  Faker::Ancient.god,
      description:   Faker::HarryPotter.quote,
-     duration: rand(1..100),
      experience: rand(1..100)
    )
  end

@@ -4,6 +4,7 @@ class PracticesController < ApplicationController
   
   def index
     @practices = Practice.all
+    render json: @practices
   end
 
   def show
@@ -65,6 +66,7 @@ class PracticesController < ApplicationController
   
   def set_practice
     @practice = Practice.find(params[:id])
+    render json: @practice
   end
   
   def practice_params

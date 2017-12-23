@@ -10,24 +10,26 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Type</th>
+            <!--<th>Type</th>-->
             <th>Description</th>
             <th>Experience Reward</th>
-            <th>Required Experience</th>
+            <!--<th>Required Experience</th>-->
             <th></th>
           </tr>
         </thead>
 
         <tbody>
           <tr ng-repeat="practice in practices">
-            <td>{{ practice.title }}</td>
-            <td>{{ practice.type }}</td>
-            <td>{{ practice.description }}</td>
-            <td>{{ practice.experience }}</td>
-            <td>{{ practice.threshold }}</td>
-            <td>
-              <a class="btn btn-primary btn-xs" ui-sref="/practice({ practiceID: practice.id })">Start</a>
-            </td>
+            <div ng-hide="">
+              <td>{{ practice.title }}</td>
+              <!--<td>{{ practice.type }}</td>-->
+              <td>{{ practice.description }}</td>
+              <td>{{ practice.experience }}</td>
+              <!--<td>{{ practice.threshold }}</td>-->
+              <td>
+                <a class="btn btn-primary btn-xs" ui-sref="/practice({ practiceID: practice.id })">Start</a>
+              </td>
+            </div>
           </tr>
         </tbody>
       </table>
