@@ -62,3 +62,7 @@ gem 'bower-rails'
 gem 'tilt'
 gem 'puma'
 gem 'rails_real_favicon'
+
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise" 
+end

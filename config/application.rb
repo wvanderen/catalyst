@@ -22,6 +22,10 @@ module Workspace
     config.assets.precompile += %w(app.js)
     config.assets.precompile += %w(HomeCtrl.js)
     
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
+    
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

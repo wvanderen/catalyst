@@ -40,5 +40,11 @@ body, html {
     padding: 16px;
 }
 
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";

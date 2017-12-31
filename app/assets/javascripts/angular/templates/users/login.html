@@ -1,0 +1,10 @@
+<div class="container-narrow" ng-controller="UsersCtrl as user">
+    <form name="loginForm" class="auth-form ng-scope ng-pristine ng-invalid ng-invalid-required">
+        <h2 class="auth-form-heading">Log in to Catalyst</h2>
+        <br>
+        <input type="text" class="input-block-level ng-pristine ng-invalid ng-invalid-required" placeholder="Email address" ng-model="user.email" required autofocus><br>
+        <input type="password" class="input-block-level ng-pristine ng-invalid ng-invalid-required" placeholder="Password" ng-model="user.password" required><br>
+        <a class="btn btn-large btn-primary" type="submit" ng-click="$scope.login(user)" ng-disabled="loginForm.$invalid" disabled="disabled">Sign in</a><br>
+        <a class="btn btn-link" ui-sref="register">Register</a>
+    </form>
+</div>

@@ -1,5 +1,5 @@
 
-var app = angular.module('catalyst', ['templates', 'ui.router']);
+var app = angular.module('catalyst', ['templates', 'ui.router', 'Devise']);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider
@@ -22,7 +22,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', functio
       url: '/practices/:practiceId',
       templateUrl: 'angular/templates/practices/show.html',
       controller: 'PracticeCtrl'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'angular/templates/users/login.html',
+      controller: 'UsersCtrl'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'angular/templates/users/register.html',
+      controller: 'UsersCtrl'
     });
+    
 
   $urlRouterProvider.otherwise('/');
 }]);

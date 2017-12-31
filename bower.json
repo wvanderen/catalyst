@@ -20,6 +20,7 @@
     "angular-ui-router": "latest",
     "angular": "latest",
     "angular-animate": "latest",
-    "bootstrap-sass-official": "latest"
+    "bootstrap-sass-official": "latest",
+    "angular-devise": "latest"
   }
 }
