@@ -61,6 +61,7 @@ gem 'bower-rails'
 gem 'tilt'
 gem 'puma'
 gem 'rails_real_favicon'
+gem 'devise_token_auth'
 
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise" 
