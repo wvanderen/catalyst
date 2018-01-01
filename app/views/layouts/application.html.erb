@@ -20,14 +20,7 @@
       <li><a ui-sref="practices" class="link">Practices</a></li>
       <!--<li>About</li>-->
       <!--<li>Contact</li>-->
-      <% if user_signed_in? %>
-         <li class="navbar-text">Signed in as: <strong><%= current_user.username %></strong></li>
-         <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-       <% else %>
-         <li><a ui-sref="login" class="link">Log In</a></li> 
-         <li><a ui-sref="register" class="link">Sign Up</a></li>
-      <% end %>
+
      </ul>
      </div>
      

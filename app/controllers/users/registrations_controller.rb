@@ -8,13 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-   def create
-      super do
-        @avatar = Avatar.new(avatar_params)
-        @user.avatar_id = @avatar.id
-        @user.save
-      end
-   end
+  # def create
+  #     super do
+  #       @avatar = Avatar.new(avatar_params)
+  #       @user.avatar_id = @avatar.id
+  #       @user.save
+  #     end
+  # end
 
   # GET /resource/edit
   # def edit

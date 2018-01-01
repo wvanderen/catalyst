@@ -54,7 +54,6 @@ end
 
 gem 'sprockets'
 gem 'bootstrap-sass'
-gem 'devise'
 gem 'faker'
 gem 'angularjs-rails'
 gem 'angular-rails-templates'

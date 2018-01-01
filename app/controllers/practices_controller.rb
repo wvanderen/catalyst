@@ -73,10 +73,10 @@ class PracticesController < ApplicationController
     params.require(:practice).permit(:title, :description, :threshold, :experience, :type)
   end
   
-  def authorize_user
-    unless current_user && current_user.admin?
-      flash[:alert] = "You must be an admin to do that."
-      redirect_to practices_path
-    end
-  end
+  # def authorize_user
+  #   unless current_user && current_user.admin?
+  #     flash[:alert] = "You must be an admin to do that."
+  #     redirect_to practices_path
+  #   end
+  # end
 end
